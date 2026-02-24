@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Company FAQ Search</title>
+    <title>Jatro BPO - FAQs</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -44,7 +44,7 @@
     <main class="flex-grow max-w-3xl mx-auto w-full px-6 py-16">
         <div class="text-center mb-10">
             <h1 class="text-4xl font-extrabold text-dark mb-4">How can we help you?</h1>
-            <p class="text-gray-500 text-lg">Search our knowledge base for instant answers.</p>
+            <p class="text-gray-500 text-lg">Search our knowledge base for instant answers to common questions.</p>
         </div>
         
         <div class="relative mb-12 group">
@@ -107,7 +107,7 @@
                 fuse = new Fuse(faqData, fuseOptions);
                 
                 searchBar.disabled = false;
-                searchBar.placeholder = "Search your frequently issue/problem you encounter...";
+                searchBar.placeholder = "Search your question here...";
             })
             .catch(error => {
                 console.error('Error loading FAQs:', error);
