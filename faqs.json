@@ -7,7 +7,8 @@
             "invoice",
             "correct",
             "number",
-            "strata"
+            "strata",
+            "plan"
         ]
     },
     {
@@ -18,7 +19,8 @@
             "invoice",
             "address",
             "matches",
-            "verify"
+            "verify",
+            "site"
         ]
     },
     {
@@ -114,10 +116,10 @@
         ]
     },
     {
-        "question": "How do you confirm ABN vadility?",
-        "answer": "All of the above",
+        "question": "How do you confirm ABN validity?",
+        "answer": "ABN Lookup, Verify GST registration, and Match with supplier master record",
         "keywords": [
-            "vadility",
+            "validity",
             "abn"
         ]
     },
@@ -180,7 +182,10 @@
         "question": "What steps must be followed for disputed or restricted invoices?",
         "answer": "Flag in system, Notify manager, Document communication, Follow manager instructions",
         "keywords": [
-            "invoices"
+            "invoices",
+            "disputed",
+            "restricted",
+            "steps"
         ]
     },
     {
@@ -218,10 +223,11 @@
         ]
     },
     {
-        "question": "How many payment Method we have and Explain?",
+        "question": "How many payment method we have and Explain?",
         "answer": "Biller code usually for utilities, insurance, levies, BSB and account number for other normal invoices",
         "keywords": [
-            "payment"
+            "payment",
+            "method"
         ]
     },
     {
