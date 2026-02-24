@@ -1,0 +1,262 @@
+[
+    {
+        "question": "How do you confirm the correct Strata Plan Number Before processing an invoice and why?",
+        "answer": "If the SP matches the invoice, if there is no SP, I will confirm the SP by searching the address in the system",
+        "keywords": [
+            "processing",
+            "invoice",
+            "correct",
+            "number",
+            "strata"
+        ]
+    },
+    {
+        "question": "How do you verify the Site Address matches the invoice description?",
+        "answer": "If the SP matches the address in the invoice. Another one is if he street number street name suberb and postal code is match in the invoice",
+        "keywords": [
+            "description",
+            "invoice",
+            "address",
+            "matches",
+            "verify"
+        ]
+    },
+    {
+        "question": "An Invoice shows the correct Strata Plan Number but the site address belongs to another building under management. What action do you take?",
+        "answer": "Check ledger if there are past transactions confirming using the SP, if there is non, we confirm it to payables before but now we can confirm them to supplier outright",
+        "keywords": [
+            "management",
+            "building",
+            "invoice",
+            "address",
+            "correct"
+        ]
+    },
+    {
+        "question": "List the correct priority order for payment:",
+        "answer": "Insurance, Utilities, Legal, Reimbursments, Repairs",
+        "keywords": [
+            "priority",
+            "payment",
+            "correct",
+            "order"
+        ]
+    },
+    {
+        "question": "Why must Insurance and Legal invoices be prioritised?",
+        "answer": "Because we have periods/ billing periods per invoice and cannot be delayed",
+        "keywords": [
+            "insurance",
+            "invoices",
+            "legal"
+        ]
+    },
+    {
+        "question": "Classify the following [Utility Bill]",
+        "answer": "Straight Forward",
+        "keywords": [
+            "utility",
+            "bill"
+        ]
+    },
+    {
+        "question": "Classify the following [Insurance]",
+        "answer": "Non-Straight forward",
+        "keywords": [
+            "insurance"
+        ]
+    },
+    {
+        "question": "Classify the following [Legal Fees]",
+        "answer": "Non-Straight forward",
+        "keywords": [
+            "legal",
+            "fees"
+        ]
+    },
+    {
+        "question": "Classify the following [Repairs]",
+        "answer": "Non-Straight forward",
+        "keywords": [
+            "repairs"
+        ]
+    },
+    {
+        "question": "Classify the following [Amitran]",
+        "answer": "Non-Straight forward",
+        "keywords": [
+            "amitran"
+        ]
+    },
+    {
+        "question": "Classify the following [Reimbursment]",
+        "answer": "Non-Straight forward",
+        "keywords": [
+            "reimbursment"
+        ]
+    },
+    {
+        "question": "What additional review is required for Non-Straight Forward issue?",
+        "answer": "If they work is non-repetitive or not simple invoices such as cleaning, gardening or if its is repairs or continue work to be done",
+        "keywords": [
+            "review"
+        ]
+    },
+    {
+        "question": "How do you confirm the Creditor/Supplier Name matches the system record?",
+        "answer": "If the ABN and bank details match and can also use past transactions in the ledger",
+        "keywords": [
+            "creditor",
+            "supplier",
+            "matches",
+            "system",
+            "record"
+        ]
+    },
+    {
+        "question": "How do you confirm ABN vadility?",
+        "answer": "All of the above",
+        "keywords": [
+            "vadility",
+            "abn"
+        ]
+    },
+    {
+        "question": "What should you do if the ABN differs from system records?",
+        "answer": "Search for the main supplier name in the invoice and match the bank details if they are the same, sometimes we can use back details name especially for owners if not match email back the supplier to confirmed outright",
+        "keywords": [
+            "records",
+            "system",
+            "abn"
+        ]
+    },
+    {
+        "question": "What process must be followed when checking bank details?",
+        "answer": "Compare the bank details of the registered in system and the bank details of the invoice",
+        "keywords": [
+            "details",
+            "process",
+            "bank"
+        ]
+    },
+    {
+        "question": "What action needed if the bank details was not match in our records?",
+        "answer": "Check back details of past transactions if in case the bank details was change.",
+        "keywords": [
+            "details",
+            "bank"
+        ]
+    },
+    {
+        "question": "A contractor urgently requests payments to a new bank account via email. What steps must you take before processing?",
+        "answer": "Forward the email to creditors to notify them so that they can update the bank details. It is also possible to create a new supplier card with new bank details",
+        "keywords": [
+            "contractor",
+            "processing",
+            "payments",
+            "account",
+            "bank"
+        ]
+    },
+    {
+        "question": "What makes an invoice a valid Tax income?",
+        "answer": "If it says \"Tax invoice\" or \"Invoice\" if it has a GST Section in invoice. If it has ABN and supplier name, if it has amounts to be paid, if there is an address to allocate and if there is an invoice number",
+        "keywords": [
+            "invoice",
+            "income",
+            "tax"
+        ]
+    },
+    {
+        "question": "How do you detect duplicate invoice numbers and Explain why?",
+        "answer": "System search: If it has an alert saying the invoice number has been uses\nReview invoice history: Check ledger for confirmation\nManual tracking: Open the invoice duplicate to confirm if indeed & duplicate",
+        "keywords": [
+            "duplicate",
+            "numbers",
+            "invoice"
+        ]
+    },
+    {
+        "question": "What steps must be followed for disputed or restricted invoices?",
+        "answer": "Flag in system, Notify manager, Document communication, Follow manager instructions",
+        "keywords": [
+            "invoices"
+        ]
+    },
+    {
+        "question": "An invoice marked \"On-Hold\" is nearing due date. What action do you take?",
+        "answer": "Theoretically, inform the manager/payables but realistically we cannot check each the invoice that are marked on hold as there are so many of them.",
+        "keywords": [
+            "invoice",
+            "hold"
+        ]
+    },
+    {
+        "question": "How do you determine the correct GL Code Explain why?",
+        "answer": "Nature of expenses: Check supplier type but the description of work is more important.\nApproved budget category: To confirmed which GL to allocate or to use.\nCommittee approval: We follow instructions of manager/committee sometimes they advise on which GL code to allocate",
+        "keywords": [
+            "correct",
+            "code",
+            "gl"
+        ]
+    },
+    {
+        "question": "What risks arise from incorrect GL allocations?",
+        "answer": "Over budget, underbudget, disrupt the financial statement",
+        "keywords": [
+            "allocations",
+            "risks",
+            "gl"
+        ]
+    },
+    {
+        "question": "What is required after payment is processed?",
+        "answer": "Update system, File documentation",
+        "keywords": [
+            "processed",
+            "payment"
+        ]
+    },
+    {
+        "question": "How many payment Method we have and Explain?",
+        "answer": "Biller code usually for utilities, insurance, levies, BSB and account number for other normal invoices",
+        "keywords": [
+            "payment"
+        ]
+    },
+    {
+        "question": "How do you maintain professional and timely communication?",
+        "answer": "Speaking appropriate language and maintain a calm, composed voice prioritized urgent ones and always inform team members for them to keep updated. (Use team channel)",
+        "keywords": []
+    },
+    {
+        "question": "Explain what could happen if A duplicate invoice is paid?",
+        "answer": "Double payment",
+        "keywords": [
+            "duplicate",
+            "invoice"
+        ]
+    },
+    {
+        "question": "Explain what could happen if An inactive plan is charged?",
+        "answer": "You cannot proceed with inactive plan",
+        "keywords": [
+            "plan"
+        ]
+    },
+    {
+        "question": "Explain what could happen if Legal fees are incorrectly allocated to all lots",
+        "answer": "Owners confusion/Mad",
+        "keywords": [
+            "legal",
+            "fees"
+        ]
+    },
+    {
+        "question": "Explain what could happen if GST is incorrectly calculated",
+        "answer": "Over/short payment of GST",
+        "keywords": [
+            "gst"
+        ]
+    }
+]

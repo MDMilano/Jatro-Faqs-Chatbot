@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company FAQ Search</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#dbae5f',       /* The requested Jatro BPO gold */
+                        primaryHover: '#c49a50',
+                        dark: '#1e293b'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans antialiased text-gray-700 bg-gray-50 min-h-screen flex flex-col">
+
+    <!-- <header class="bg-white shadow-sm border-b border-gray-100 py-4">
+        <div class="max-w-4xl mx-auto px-6 flex items-center">
+            <div class="w-8 h-8 bg-primary rounded flex items-center justify-center mr-3 shadow-sm">
+                <span class="text-white font-bold text-lg">J</span>
+            </div>
+            <span class="font-bold text-xl text-dark tracking-tight">Jatro <span class="text-primary">BPO</span></span>
+            <span class="ml-4 pl-4 border-l border-gray-200 text-gray-500 font-medium">Support Center</span>
+        </div>
+    </header> -->
+
+    <main class="flex-grow max-w-3xl mx-auto w-full px-6 py-16">
+        <div class="text-center mb-10">
+            <h1 class="text-4xl font-extrabold text-dark mb-4">How can we help you?</h1>
+            <p class="text-gray-500 text-lg">Search our knowledge base for instant answers.</p>
+        </div>
+        
+        <div class="relative mb-12 group">
+            <div class="absolute inset-y-0 left-0 pl-6 flex items-center pointer-events-none">
+                <svg class="w-6 h-6 text-gray-400 group-focus-within:text-primary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            </div>
+            <input 
+                type="text" 
+                id="search-bar" 
+                placeholder="Loading FAQs..." 
+                autocomplete="off" 
+                oninput="performSearch()" 
+                disabled
+                class="w-full py-5 pl-14 pr-6 text-lg text-gray-700 bg-white border border-gray-200 rounded-full shadow-sm outline-none transition-all duration-300 focus:shadow-md focus:border-primary focus:ring-2 focus:ring-primary/20 disabled:bg-gray-100 disabled:cursor-not-allowed"
+            >
+        </div>
+
+        <div id="results-area" class="flex flex-col gap-4">
+            </div>
+    </main>
+
+    <div id="modal-overlay" class="fixed inset-0 bg-dark/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 transition-opacity" onclick="closeModal(event)">
+        <div id="modal-content" class="bg-white w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden relative transform transition-all" onclick="event.stopPropagation()">
+            
+            <div class="bg-gray-50 px-8 py-6 border-b border-gray-100 flex justify-between items-start">
+                <h2 id="modal-title" class="text-2xl font-bold text-dark pr-8"></h2>
+                <button onclick="closeModal()" class="text-gray-400 hover:text-dark transition-colors absolute top-6 right-6 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            
+            <div class="px-8 py-8">
+                <p id="modal-body" class="text-gray-600 text-lg leading-relaxed"></p>
+            </div>
+            
+            <div class="bg-gray-50 px-8 py-4 border-t border-gray-100 text-right">
+                <button onclick="closeModal()" class="bg-primary hover:bg-primaryHover text-white px-6 py-2 rounded-lg font-medium transition-colors shadow-sm">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let faqData = [];
+        let fuse;
+        const searchBar = document.getElementById('search-bar');
+        const resultsArea = document.getElementById('results-area');
+
+        // 1. Fetch the JSON data
+        fetch('faqs.json')
+            .then(response => response.json())
+            .then(data => {
+                faqData = data;
+                const fuseOptions = {
+                    keys: ['keywords', 'question'], 
+                    threshold: 0.4,                 
+                    includeScore: true
+                };
+                fuse = new Fuse(faqData, fuseOptions);
+                
+                searchBar.disabled = false;
+                searchBar.placeholder = "Search your frequently issue/problem you encounter...";
+            })
+            .catch(error => {
+                console.error('Error loading FAQs:', error);
+                searchBar.placeholder = "Error loading FAQs. Please try again later.";
+            });
+
+        // 2. Search Logic using Tailwind Classes for created elements
+        function performSearch() {
+            if (!fuse) return; 
+
+            const query = searchBar.value.trim();
+            resultsArea.innerHTML = '';
+
+            if (!query) return; 
+
+            const results = fuse.search(query);
+
+            if (results.length > 0) {
+                results.forEach(result => {
+                    // Create card using Tailwind classes
+                    const card = document.createElement('div');
+                    card.className = 'bg-white p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:border-primary/40 cursor-pointer transition-all duration-200 group flex justify-between items-center';
+                    card.onclick = () => openModal(result.item.question, result.item.answer);
+                    
+                    const questionDiv = document.createElement('div');
+                    const question = document.createElement('h3');
+                    question.className = 'text-lg font-semibold text-dark group-hover:text-primary transition-colors';
+                    question.textContent = result.item.question;
+                    
+                    // Add a little arrow icon for visual polish
+                    const icon = document.createElement('div');
+                    icon.innerHTML = `<svg class="w-5 h-5 text-gray-400 group-hover:text-primary transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>`;
+                    
+                    questionDiv.appendChild(question);
+                    card.appendChild(questionDiv);
+                    card.appendChild(icon);
+                    resultsArea.appendChild(card);
+                });
+            } else {
+                // Tailwind styled "No Results" state
+                const noResults = document.createElement('div');
+                noResults.className = 'text-center py-10 bg-white rounded-xl border-2 border-dashed border-gray-200';
+                noResults.innerHTML = `
+                    <svg class="w-12 h-12 text-gray-300 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <p class="text-gray-500 font-medium">No matching FAQs found.</p>
+                    <p class="text-sm text-gray-400 mt-1">Please contact HR or IT directly.</p>
+                `;
+                resultsArea.appendChild(noResults);
+            }
+        }
+
+        // 3. Modal Logic
+        const modalOverlay = document.getElementById('modal-overlay');
+        const modalTitle = document.getElementById('modal-title');
+        const modalBody = document.getElementById('modal-body');
+
+        function openModal(question, answer) {
+            modalTitle.textContent = question;
+            modalBody.textContent = answer;
+            // Tailwind hidden class toggle
+            modalOverlay.classList.remove('hidden');
+        }
+
+        function closeModal(event) {
+            if (!event || event.target.id === 'modal-overlay') {
+                modalOverlay.classList.add('hidden');
+            }
+        }
+        
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") {
+                closeModal();
+            }
+        });
+    </script>
+
+</body>
+</html>
